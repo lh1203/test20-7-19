@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lh.dao.StudentDao">
+    <select id="findAllStudent" resultType="Student">
+        select * from t_student
+    </select>
+    <insert id="insertIntoStudent">
+        insert into t_student values(#{stuid},#{sname})
+    </insert>
+    <select id="findOneStudentById" resultType="Student">
+        select * from t_student where stuid = #{suibian}
+    </select>
+    <select id="findAllStudetAndCourse" resultType="StudentAndCourse">
+        select t.stuid,t.name sname,c.courid,c.name cname
+        from t_student t
+        join t_course c
+        on t.courid=c.courid
+    </select>
+</mapper>
